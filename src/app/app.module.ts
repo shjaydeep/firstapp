@@ -3,22 +3,27 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {AngularFireModule} from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { TaskViewComponent } from './pages/task-view/task-view.component';
+import { TaskViewComponent } from './pages/task-view/task-view.component';
  import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import {FirebaseService} from './services/firebase.service'
+import {FirebaseService} from './services/firebase.service';
+import { DashbordComponent } from './pages/dashbord/dashbord.component';
+import { NewListComponent } from './pages/new-list/new-list.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupPageComponent,
     LoginPageComponent,
-    //TaskViewComponent
+    TaskViewComponent,
+    DashbordComponent,
+    NewListComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +31,7 @@ import {FirebaseService} from './services/firebase.service'
     FormsModule,
     MatInputModule,
     AppRoutingModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyBa-2V4EaV9Bw6rSOQom1Ztdodf2AFlO9E",
       authDomain: "habit-tracker-fec25.firebaseapp.com",

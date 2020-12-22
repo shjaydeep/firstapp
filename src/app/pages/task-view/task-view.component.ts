@@ -10,6 +10,7 @@ export class TaskViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(localStorage.getItem("uid"));
   }
 
 }
