@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-list',
@@ -9,7 +10,8 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class NewListComponent implements OnInit {
   toDoListArray: any[];
-  constructor(private toDoService: TodoService) { }
+  itemlist: string[]=[];
+  constructor(private toDoService: TodoService, private router: Router) { }
 
   ngOnInit() {
     this.toDoService.getToDoList().snapshotChanges()
@@ -21,16 +23,24 @@ export class NewListComponent implements OnInit {
         this.toDoListArray.push(x);
       })
 
-      //sort array isChecked false  -> true
+      //sort array isChecked false  -> true and all
         this.toDoListArray.sort((a,b) => {
           return a.isChecked - b.isChecked;
         })
     });
   }
 
+  makearray(item){
+    console.log(item.value);
+    this.itemlist.push(item.value);
+    console.log(this.itemlist);
+    item.value = null;
+  }
   onAdd(itemTitle) {
-    this.toDoService.addTitle(itemTitle.value);
+
+    this.toDoService.addTitle(itemTitle.value, this.itemlist);
     itemTitle.value = null;
+    this.router.navigate(['/lists']);
   }
 
   alterCheck($key: string,isChecked) {
@@ -40,4 +50,6 @@ export class NewListComponent implements OnInit {
   onDelete($key : string){
     this.toDoService.removeTitle($key);
   }
+
+
 }

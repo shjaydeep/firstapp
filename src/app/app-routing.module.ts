@@ -5,6 +5,7 @@ import { NewListComponent } from './pages/new-list/new-list.component';
 // import { NewTaskComponent } from './pages/new-task/new-task.component';
  import { LoginPageComponent } from './pages/login-page/login-page.component';
  import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+ import { PullrequestComponent } from './pages/pullrequest/pullrequest.component';
 // import { EditListComponent } from './pages/edit-list/edit-list.component';
 // import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'lists', component: TaskViewComponent },
+  { path: 'addpullrequest', component: PullrequestComponent}
   // { path: 'lists/:listId', component: TaskViewComponent },
   // { path: 'lists/:listId/new-task', component: NewTaskComponent },
   // { path: 'lists/:listId/edit-task/:taskId', component: EditTaskComponent },

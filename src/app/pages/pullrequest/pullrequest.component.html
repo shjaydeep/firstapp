@@ -2,26 +2,27 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="jumbotron" style="padding:45px 0px">
-        <h4 class="text-center">Create New checklist</h4>
+        <h4 class="text-center">Create New Pull Request</h4>
       </div>
       <div>
-        <input type="text" #title placeholder="Add title for new checklist.."/>
+        <input type="text" #pullname placeholder="Add Pull request name..."/><br>
       </div>
-      <div class="input-group">
-        <input type="text" class="form-control" #item>
-        <button (click)="makearray(item)">Add</button>
+
+      <div>
+        <input type="text" #projectname placeholder="Add project name..."/>
       </div>
+
 
       <div style="margin:5px 0px">
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let item of itemlist">
-            <!-- <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
+            <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
               <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
-            </span> -->
+            </span>
             {{item}}
-            <!-- <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+            <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
               <i class="fa fa-trash-o fa-lg"></i>
-            </span> -->
+            </span>
           </li>
         </ul>
       </div>
@@ -31,3 +32,4 @@
     </div>
   </div>
 </div>
+
