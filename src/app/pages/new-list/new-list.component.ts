@@ -28,8 +28,10 @@ export class NewListComponent implements OnInit {
     });
   }
 
-  onAdd(itemTitle) {
-    this.toDoService.addTitle(itemTitle.value);
+
+  onAdd(itemTitle, items) {
+    this.toDoService.addTitle(itemTitle.value, items.value);
+
     itemTitle.value = null;
   }
 
