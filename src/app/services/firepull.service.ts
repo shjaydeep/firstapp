@@ -20,7 +20,7 @@ export class FirepullService {
     return this.toDoList;
   }
 
-  addTitle(pullname: string, projectname: string, itemlist: string[]) {
+  addTitle(pullname: string, projectname: string, itemlist) {
     const uid = localStorage.getItem("uid");
     const t = localStorage.getItem("title");
     this.toDoList = this.firebasedb.list('users/'+uid+'/CheckList/'+t+'/PullRequest/');
@@ -40,3 +40,5 @@ export class FirepullService {
   }
 
 }
+
+

@@ -12,6 +12,7 @@ import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_c
 })
 export class PullrequestComponent implements OnInit {
   listarray: any = [];
+  map = new Map<string, string>();
 
   constructor(private firepullservice: FirepullService, private router: Router) { }
 
@@ -26,22 +27,33 @@ export class PullrequestComponent implements OnInit {
         // x["$key"] = element.key;
         this.listarray.push(x);
       })
+      for (let x = 0; x < this.listarray.length; x++) {
+
+        this.map.set(this.listarray[x],"false");
+
+       }
    // console.log(this.toDoService.getToDoList());
    console.log(this.listarray);
     })
 
-  }
+
+    // console.log(this.map);
+    }
 
   onAdd(pullname, projectname) {
-
-    this.firepullservice.addTitle(pullname.value, projectname.value, this.listarray);
+    console.log(this.map);
+    this.firepullservice.addTitle(pullname.value, projectname.value, this.map);
     pullname.value = null;
     projectname.value = null;
     this.router.navigate(['/lists']);
   }
 
-  alterCheck($key: string,isChecked) {
-    this.firepullservice.checkOrUnCheckTitle($key,!isChecked);
+  alterCheck(key: string) {
+    const a =  this.listarray.findIndex(x => x === key);
+   // console.log(a);
+    this.map.set(this.listarray[a],"true");
+    //console.log(this.map);
+    //this.firepullservice.checkOrUnCheckTitle(a,!isChecked);
   }
 
   onDelete($key : string){
@@ -50,7 +62,6 @@ export class PullrequestComponent implements OnInit {
 
 
 }
-
 
 
 
