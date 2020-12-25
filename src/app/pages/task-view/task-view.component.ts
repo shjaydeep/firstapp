@@ -29,6 +29,14 @@ export class TaskViewComponent implements OnInit {
   }
   nevigate(title: string){
     localStorage.setItem('title', title);
-    this.router.navigate(['/addpullrequest']);
+    this.router.navigate(['/view-pull-request']);
+
   }
+
+  edit(title: string){
+    localStorage.setItem('title', title);
+    this.router.navigate(['/edittask']);
+  }
+
+
 }

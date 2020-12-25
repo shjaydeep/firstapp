@@ -15,7 +15,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {FirebaseService} from './services/firebase.service';
 import { DashbordComponent } from './pages/dashbord/dashbord.component';
 import { NewListComponent } from './pages/new-list/new-list.component';
-import { PullrequestComponent } from './pages/pullrequest/pullrequest.component'
+import { PullrequestComponent } from './pages/pullrequest/pullrequest.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
+import { PullRequestsComponent } from './pull-requests/pull-requests.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PullrequestComponent } from './pages/pullrequest/pullrequest.component'
     TaskViewComponent,
     DashbordComponent,
     NewListComponent,
-    PullrequestComponent
+    PullrequestComponent,
+    EditTaskComponent,
+    PullRequestsComponent
   ],
   imports: [
     BrowserModule,

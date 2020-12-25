@@ -12,7 +12,7 @@ import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_c
 })
 export class PullrequestComponent implements OnInit {
   listarray: any = [];
-  map = new Map<string, string>();
+  map = new Map();
 
   constructor(private firepullservice: FirepullService, private router: Router) { }
 
@@ -56,8 +56,9 @@ export class PullrequestComponent implements OnInit {
     //this.firepullservice.checkOrUnCheckTitle(a,!isChecked);
   }
 
-  onDelete($key : string){
-    this.firepullservice.removeTitle($key);
+  onDelete(key : string){
+    const a =  this.listarray.findIndex(x => x === key);
+   // this.firepullservice.removeTitle($key);
   }
 
 

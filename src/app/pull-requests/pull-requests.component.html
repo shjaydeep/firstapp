@@ -1,17 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="jumbotron" style="padding:45px 0px">
-        <h4 class="text-center">View All Pull Request</h4>
-      </div>
-      <div>
+
 <div style="margin:5px 0px">
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let item of listarray">
       <!-- <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
         <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
       </span> -->
-      <button (click)="nevigate(item.pullRequest_name)">{{item.pullRequest_name}}</button>
+      <p>Pull Request Name:   {{item.pullRequest_name}}</p>
+      <p>Project Name: {{item.project_name}}</p>
+      {{item.pullRequest_CheckList}}
 
       <!-- <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
         <i class="fa fa-trash-o fa-lg"></i>
@@ -21,7 +19,5 @@
 </div>
 <div>
 
-<div>
-  <button routerLink="/addpullrequest">Create New pull Request</button>
-</div>
+
 

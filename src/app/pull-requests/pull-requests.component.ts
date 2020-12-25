@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FirepullService } from 'src/app/services/firepull.service';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-dashbord',
-  templateUrl: './dashbord.component.html',
-  styleUrls: ['./dashbord.component.css'],
+  selector: 'app-pull-requests',
+  templateUrl: './pull-requests.component.html',
+  styleUrls: ['./pull-requests.component.css'],
   providers: [FirepullService]
 })
-export class DashbordComponent implements OnInit {
+export class PullRequestsComponent implements OnInit {
+
   listarray: any = [];
   constructor(private firepullservice: FirepullService, private router: Router) { }
 
@@ -27,11 +28,6 @@ export class DashbordComponent implements OnInit {
       })
       console.log(this.listarray);
     })
-  }
-  nevigate(pullRequest_name: string){
-    localStorage.setItem('pullRequest_name', pullRequest_name);
-    this.router.navigate(['/pull-requests']);
-
   }
 
 
