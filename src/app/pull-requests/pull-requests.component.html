@@ -1,20 +1,21 @@
-<div class="container">
-  <div class="row">
 
 <div style="margin:5px 0px">
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let item of listarray">
+    <ul class="list-group-item" *ngFor="let item of listarray">
       <!-- <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
         <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
       </span> -->
-      <p>Pull Request Name:   {{item.pullRequest_name}}</p>
-      <p>Project Name: {{item.project_name}}</p>
-      {{item.pullRequest_CheckList}}
-
-      <!-- <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
-        <i class="fa fa-trash-o fa-lg"></i>
-      </span> -->
-    </li>
+      <p><b> Pull Request Name:   {{item.pullRequest_name}}</b></p>
+      <p><b> Project Name: {{item.project_name}}</b></p>
+      <ul class="list-group-item" *ngFor="let i of item.pullRequest_CheckList | keyvalue">
+        <li class="list-group-item" *ngFor="let j of i.value | keyvalue">
+          <!-- <li class="list-group-item **ngFor="let k of i""></li> -->
+        <!-- <div *ngIf="j.value[0]==='t'"><p>Done {{j.value}}</p></div> -->
+        {{j.value}}
+        <!-- {{j.value[0][0]}} -->
+        </li>
+      </ul>
+    </ul>
   </ul>
 </div>
 <div>

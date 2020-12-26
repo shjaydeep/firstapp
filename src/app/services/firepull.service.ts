@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import {} from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -66,13 +65,20 @@ export class FirepullService {
     this.toDoList = this.firebasedb.list('users/'+uid+'/CheckList/'+t+'/PullRequest/'+pullname+'/pullRequest_CheckList/');
     this.toDoList.set(i.toString(),{
       task_name: tasks[i],
-      Checked: v[i]
+      checked: v[i]
     });
   }
 
   }
 
-
+  editchecklist(title: string, itemlist: string[]) {
+    const uid = localStorage.getItem("uid");
+    this.toDoList = this.firebasedb.list('users/'+uid+'/CheckList/');
+    this.toDoList.set(title,{
+      task_list: itemlist,
+      title: title
+    });
+  }
 
   checkOrUnCheckTitle($key: string, flag: boolean) {
     this.toDoList.update($key, { isChecked: flag });

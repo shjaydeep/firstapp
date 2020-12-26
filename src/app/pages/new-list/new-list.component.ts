@@ -47,8 +47,15 @@ export class NewListComponent implements OnInit {
     this.toDoService.checkOrUnCheckTitle($key,!isChecked);
   }
 
-  onDelete($key : string){
-    this.toDoService.removeTitle($key);
+  // onDelete($key : string){
+  //   this.toDoService.removeTitle($key);
+  // }
+
+  onDelete(key : string){
+    const a =  this.itemlist.findIndex(x => x === key);
+    this.itemlist.splice(a, 1);
+    // this.firepullservice.removeTitle(a.toString());
+
   }
 
 

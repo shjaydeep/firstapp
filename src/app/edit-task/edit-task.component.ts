@@ -31,6 +31,21 @@ export class EditTaskComponent implements OnInit {
     // console.log(this.map);
     }
 
+    makearray(item){
+      console.log(item.value);
+      this.listarray.push(item.value);
+      console.log(this.listarray);
+      item.value = null;
+      const oldtitle = localStorage.getItem('title');
+      this.firepullservice.editchecklist(oldtitle ,this.listarray);
+    }
+    // onAdd(itemTitle) {
+
+    //   this.toDoService.addTitle(itemTitle.value, this.itemlist);
+    //   itemTitle.value = null;
+    //   this.router.navigate(['/lists']);
+    // }
+
   onDelete(key : string){
     const a =  this.listarray.findIndex(x => x === key);
     this.firepullservice.removeTitle(a.toString());

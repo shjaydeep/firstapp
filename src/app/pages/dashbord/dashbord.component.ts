@@ -12,7 +12,7 @@ export class DashbordComponent implements OnInit {
   constructor(private firepullservice: FirepullService, private router: Router) { }
 
   ngOnInit() {
-    //console.log(localStorage.getItem("uid"));
+
 
     this.listarray = this.firepullservice.getpullrequest().snapshotChanges()
     .subscribe(item => {

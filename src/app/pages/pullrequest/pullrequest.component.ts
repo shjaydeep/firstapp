@@ -42,6 +42,13 @@ export class PullrequestComponent implements OnInit {
 
   onAdd(pullname, projectname) {
     console.log(this.map);
+    for (let i = 0; i < this.listarray.length; i++) {
+      if (this.map.get(this.listarray[i]) != 'true') {
+        window.alert("All Tasks Of Task List Should be completed before Creating Pull Request! ");
+        return false;
+      }
+
+    }
     this.firepullservice.addTitle(pullname.value, projectname.value, this.map);
     pullname.value = null;
     projectname.value = null;
@@ -51,7 +58,14 @@ export class PullrequestComponent implements OnInit {
   alterCheck(key: string) {
     const a =  this.listarray.findIndex(x => x === key);
    // console.log(a);
+   if (this.map.get(this.listarray[a]) === "true") {
+    this.map.set(this.listarray[a],"false");
+   }
+   else  {
     this.map.set(this.listarray[a],"true");
+   }
+
+
     //console.log(this.map);
     //this.firepullservice.checkOrUnCheckTitle(a,!isChecked);
   }
