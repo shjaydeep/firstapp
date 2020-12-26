@@ -48,13 +48,24 @@ export class EditTaskComponent implements OnInit {
 
   onDelete(key : string){
     const a =  this.listarray.findIndex(x => x === key);
-    this.firepullservice.removeTitle(a.toString());
+    this.listarray.splice(a, 1);
+    const localtitle = localStorage.getItem('title');
+    this.firepullservice.editchecklist(localtitle, this.listarray);
+    //this.firepullservice.removeTitle(a.toString());
 
   }
 
-  update(key:string){
+  update(key:string, newvalue:string){
+    console.log(key);
     const a =  this.listarray.findIndex(x => x === key);
-    this.firepullservice.updatetask(a.toString(), key);
+
+
+  this.listarray[a] = newvalue;
+
+    console.log(this.listarray);
+    const localtitle = localStorage.getItem('title');
+    this.firepullservice.editchecklist(localtitle, this.listarray);
+    // this.firepullservice.updatetask(a.toString(), key);
   }
 
 }

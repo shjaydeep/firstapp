@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="jumbotron" style="padding:45px 0px">
-        <center>View Your Checklist</center>
+        <center>Edit Your Checklist</center>
       </div>
 
 
@@ -12,9 +12,15 @@
           <li class="list-group-item" *ngFor="let item of listarray">
             <!-- <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item,item.isChecked)"> -->
               <!-- <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i> -->
-              {{item}}
+              <input type="text" value="{{item}}" #title/>
+
+
             <span class="hover-cursor text-danger pull-right" (click)="onDelete(item)">
               <i class="fa fa-trash-o fa-lg"></i>
+            </span>
+
+            <span class="hover-cursor text-danger pull-right">
+              <button (click)="update(item, title.value)">Update</button>
             </span>
 
           </li>
