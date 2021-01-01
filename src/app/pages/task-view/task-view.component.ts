@@ -13,7 +13,6 @@ export class TaskViewComponent implements OnInit {
   constructor(private toDoService: TodoService, private router: Router) { }
 
   ngOnInit() {
-    //console.log(localStorage.getItem("uid"));
 
     this.listarray = this.toDoService.getToDoList().snapshotChanges()
     .subscribe(item => {
@@ -23,20 +22,15 @@ export class TaskViewComponent implements OnInit {
         x["$key"] = element.key;
         this.listarray.push(x);
       })
-   // console.log(this.toDoService.getToDoList());
-   console.log(this.listarray);
     })
   }
   nevigate(title: string){
     localStorage.setItem('title', title);
     this.router.navigate(['/view-pull-request']);
-
   }
 
   edit(title: string){
     localStorage.setItem('title', title);
     this.router.navigate(['/edittask']);
   }
-
-
 }

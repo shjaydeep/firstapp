@@ -9,25 +9,28 @@ export class FirebaseService {
 
   isLoggedIn = false
   constructor(public firebaseAuth : AngularFireAuth,  private router: Router) { }
+
+  //function for siging in user
   async signin(email: string, password : string){
     await this.firebaseAuth.signInWithEmailAndPassword(email,password)
     .then(res=>{
       this.isLoggedIn = true
-     // sessionStorage.setItem('id', (JSON.stringify(res.user)).id);
-      //localStorage.setItem('user',JSON.stringify(res.user))
+
       localStorage.setItem('uid',(res.user)["uid"])
       const a = localStorage.getItem('uid');
-      console.log(a);
+
       this.router.navigate(['/lists']);
     })
   }
+
+  //function for registering user
   async signup(email: string, password : string){
     await this.firebaseAuth.createUserWithEmailAndPassword(email,password)
     .then(res=>{
       this.isLoggedIn = true
       localStorage.setItem('uid',(res.user)["uid"])
       const a = localStorage.getItem('uid');
-      console.log(a);
+
       this.router.navigate(['/lists']);
     })
   }
@@ -35,10 +38,4 @@ export class FirebaseService {
     this.firebaseAuth.signOut()
     localStorage.removeItem('user')
   }
-//   get isAuthenticated(): boolean {
-//     return this.isAuthenticated !== null;
-// }
-//   get currentUserId(): string {
-//     return this.isAuthenticated ? this.isAuthenticated.uid : null;
-//   }
 }

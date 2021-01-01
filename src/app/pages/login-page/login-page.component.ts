@@ -33,16 +33,6 @@ export class LoginPageComponent implements OnInit {
     this.isSignedIn = false
 
   }
-
-  // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  //   if (localStorage.getItem('currentUser')) {
-  //       // logged in so return true
-
-  //   }
-
-  //   // not logged in so redirect to login page with the return url and return false
-  //   this.router.navigate(['login'], { queryParams: { returnUrl: state.url }});
-  //   return false;
   getUserId() {
     return localStorage.getItem('uid');
   }

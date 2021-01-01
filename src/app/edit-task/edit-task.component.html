@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="jumbotron" style="padding:45px 0px">
-        <center>Edit Your Checklist</center>
+        Edit Your Checklist
       </div>
 
 
@@ -10,15 +10,14 @@
       <div style="margin:5px 0px">
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let item of listarray">
-            <!-- <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item,item.isChecked)"> -->
-              <!-- <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i> -->
               <input type="text" value="{{item}}" #title/>
 
-
+              <!-- button to delete item -->
             <span class="hover-cursor text-danger pull-right" (click)="onDelete(item)">
               <i class="fa fa-trash-o fa-lg"></i>
             </span>
 
+            <!-- button to update an item -->
             <span class="hover-cursor text-danger pull-right">
               <button (click)="update(item, title.value)">Update</button>
             </span>
@@ -27,28 +26,11 @@
         </ul>
       </div>
 
+      <!-- section to add an new item to existing list -->
       <div class="input-group">
         <input type="text" class="form-control" #item>
         <button (click)="makearray(item)">Add</button>
       </div>
-
-      <div style="margin:5px 0px">
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let item of itemlist">
-            <!-- <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
-              <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
-            </span> -->
-            {{item}}
-            <!-- <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
-              <i class="fa fa-trash-o fa-lg"></i>
-            </span> -->
-          </li>
-        </ul>
-      </div>
-      <!-- <div>
-          <button (click)="onAdd(title)">Update</button>
-      </div> -->
-
     </div>
   </div>
 </div>

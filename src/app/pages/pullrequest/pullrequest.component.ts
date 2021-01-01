@@ -23,31 +23,20 @@ export class PullrequestComponent implements OnInit {
       this.listarray = [];
       item.forEach(element => {
         var x = element.payload.toJSON();
-       // console.log(x);
-        // x["$key"] = element.key;
         this.listarray.push(x);
       })
       for (let x = 0; x < this.listarray.length; x++) {
-
         this.map.set(this.listarray[x],"false");
-
        }
-   // console.log(this.toDoService.getToDoList());
-   console.log(this.listarray);
     })
-
-
-    // console.log(this.map);
     }
 
   onAdd(pullname, projectname) {
-    console.log(this.map);
     for (let i = 0; i < this.listarray.length; i++) {
       if (this.map.get(this.listarray[i]) != 'true') {
         window.alert("All Tasks Of Task List Should be completed before Creating Pull Request! ");
         return false;
       }
-
     }
     this.firepullservice.addTitle(pullname.value, projectname.value, this.map);
     pullname.value = null;
@@ -57,25 +46,17 @@ export class PullrequestComponent implements OnInit {
 
   alterCheck(key: string) {
     const a =  this.listarray.findIndex(x => x === key);
-   // console.log(a);
    if (this.map.get(this.listarray[a]) === "true") {
     this.map.set(this.listarray[a],"false");
    }
    else  {
     this.map.set(this.listarray[a],"true");
    }
-
-
-    //console.log(this.map);
-    //this.firepullservice.checkOrUnCheckTitle(a,!isChecked);
   }
 
   onDelete(key : string){
     const a =  this.listarray.findIndex(x => x === key);
-   // this.firepullservice.removeTitle($key);
   }
-
-
 }
 
 

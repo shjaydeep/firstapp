@@ -36,30 +36,22 @@ export class FirepullService {
   }
 
   addTitle(pullname: string, projectname: string, itemlist) {
-    console.log(itemlist);
     const uid = localStorage.getItem("uid");
     const t = localStorage.getItem("title");
     this.toDoList = this.firebasedb.list('users/'+uid+'/CheckList/'+t+'/PullRequest/');
     this.toDoList.set(pullname,{
      project_name:  projectname,
      pullRequest_name: pullname
-
-     //pullRequest_CheckList: itemlist
     });
     let tasks = [];
     for (let key of itemlist.keys()) {
-      //console.log("Map Keys= " +key);
       tasks.push(key);
   }
     let v = [];
   for (let value of itemlist.values()) {
-    //console.log("Map Values= " +value);
          v.push(value);
 }
 
-
-  console.log(tasks);
-  console.log(v);
 
   for (let i = 0; i < tasks.length; i++){
     this.toDoList = this.firebasedb.list('users/'+uid+'/CheckList/'+t+'/PullRequest/'+pullname+'/pullRequest_CheckList/');

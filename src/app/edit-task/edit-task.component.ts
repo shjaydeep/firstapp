@@ -12,60 +12,39 @@ export class EditTaskComponent implements OnInit {
   listarray: any = [];
   constructor(private firepullservice: FirepullService, private router: Router) { }
   ngOnInit() {
-
+    // getting the checklist from database and storing in listarray
     this.listarray = this.firepullservice.getToDoListofchecklist().snapshotChanges()
     .subscribe(item => {
       this.listarray = [];
       item.forEach(element => {
         var x = element.payload.toJSON();
-       // console.log(x);
-        // x["$key"] = element.key;
+
         this.listarray.push(x);
       })
-
-   // console.log(this.toDoService.getToDoList());
-   console.log(this.listarray);
     })
-
-
-    // console.log(this.map);
     }
 
+    // making list of newly added tasks
     makearray(item){
-      console.log(item.value);
       this.listarray.push(item.value);
-      console.log(this.listarray);
       item.value = null;
       const oldtitle = localStorage.getItem('title');
       this.firepullservice.editchecklist(oldtitle ,this.listarray);
     }
-    // onAdd(itemTitle) {
 
-    //   this.toDoService.addTitle(itemTitle.value, this.itemlist);
-    //   itemTitle.value = null;
-    //   this.router.navigate(['/lists']);
-    // }
-
+     //function to delete task
   onDelete(key : string){
     const a =  this.listarray.findIndex(x => x === key);
     this.listarray.splice(a, 1);
     const localtitle = localStorage.getItem('title');
     this.firepullservice.editchecklist(localtitle, this.listarray);
-    //this.firepullservice.removeTitle(a.toString());
-
   }
 
+  //function to edit task
   update(key:string, newvalue:string){
-    console.log(key);
     const a =  this.listarray.findIndex(x => x === key);
-
-
-  this.listarray[a] = newvalue;
-
-    console.log(this.listarray);
+    this.listarray[a] = newvalue;
     const localtitle = localStorage.getItem('title');
     this.firepullservice.editchecklist(localtitle, this.listarray);
-    // this.firepullservice.updatetask(a.toString(), key);
   }
-
 }

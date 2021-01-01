@@ -13,26 +13,20 @@ export class DashbordComponent implements OnInit {
 
   ngOnInit() {
 
-
+// function to get all items from database
     this.listarray = this.firepullservice.getpullrequest().snapshotChanges()
     .subscribe(item => {
       this.listarray = [];
       item.forEach(element => {
         var x = element.payload.toJSON();
-       // console.log(x);
-        // x["$key"] = element.key;
         this.listarray.push(x);
-      console.log(this.listarray);
-
       })
-      console.log(this.listarray);
     })
   }
+
+    //function to nevigate to view pull request page
   nevigate(pullRequest_name: string){
     localStorage.setItem('pullRequest_name', pullRequest_name);
     this.router.navigate(['/pull-requests']);
-
   }
-
-
 }

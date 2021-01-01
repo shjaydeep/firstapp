@@ -23,7 +23,7 @@ export class NewListComponent implements OnInit {
         this.toDoListArray.push(x);
       })
 
-      //sort array isChecked false  -> true and all
+      //sort array isChecked false  to true
         this.toDoListArray.sort((a,b) => {
           return a.isChecked - b.isChecked;
         })
@@ -36,6 +36,7 @@ export class NewListComponent implements OnInit {
     console.log(this.itemlist);
     item.value = null;
   }
+
   onAdd(itemTitle) {
 
     this.toDoService.addTitle(itemTitle.value, this.itemlist);
@@ -43,20 +44,8 @@ export class NewListComponent implements OnInit {
     this.router.navigate(['/lists']);
   }
 
-  alterCheck($key: string,isChecked) {
-    this.toDoService.checkOrUnCheckTitle($key,!isChecked);
-  }
-
-  // onDelete($key : string){
-  //   this.toDoService.removeTitle($key);
-  // }
-
   onDelete(key : string){
     const a =  this.itemlist.findIndex(x => x === key);
     this.itemlist.splice(a, 1);
-    // this.firepullservice.removeTitle(a.toString());
-
   }
-
-
 }

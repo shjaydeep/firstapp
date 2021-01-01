@@ -11,12 +11,14 @@ export class TodoService {
 
   constructor(private firebasedb: AngularFireDatabase) { }
 
+  //function for gfetting checklist from database
   getToDoList() {
     const uid = localStorage.getItem("uid");
     this.toDoList = this.firebasedb.list('users/'+uid+'/CheckList/');
     return this.toDoList;
   }
 
+  //function for adding new created checklist to database
   addTitle(title: string, itemlist: string[]) {
     const uid = localStorage.getItem("uid");
     this.toDoList = this.firebasedb.list('users/'+uid+'/CheckList/');
@@ -25,14 +27,4 @@ export class TodoService {
       title: title
     });
   }
-
-  checkOrUnCheckTitle($key: string, flag: boolean) {
-    this.toDoList.update($key, { isChecked: flag });
-  }
-
-  removeTitle($key: string) {
-    this.toDoList.remove($key);
-  }
-
-
 }
